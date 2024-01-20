@@ -1,0 +1,41 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /barraka/
+    
+    # Tambahkan aturan untuk menyembunyikan ekstensi .php
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+    # Tambahkan aturan untuk direktori data
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^data/([^\.]+)$ data/$1.php [NC,L]
+
+    # Tambahkan aturan untuk direktori tambah
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^tambah/([^\.]+)$ tambah/$1.php [NC,L]
+
+     # Tambahkan aturan untuk direktori ubah
+     RewriteCond %{REQUEST_FILENAME} !-d
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteRule ^ubah/([^\.]+)$ ubah/$1.php [NC,L]
+
+     # Tambahkan aturan untuk direktori hapus
+     RewriteCond %{REQUEST_FILENAME} !-d
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteRule ^hapus/([^\.]+)$ hapus/$1.php [NC,L]
+
+     # Tambahkan aturan untuk direktori excel
+     RewriteCond %{REQUEST_FILENAME} !-d
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteRule ^excel/([^\.]+)$ excel/$1.php [NC,L]
+
+     # Tambahkan aturan untuk direktori ajax
+     RewriteCond %{REQUEST_FILENAME} !-d
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteRule ^ajax/([^\.]+)$ ajax/$1.php [NC,L]
+</IfModule>
+
+ErrorDocument 404 /barraka/error404.html
